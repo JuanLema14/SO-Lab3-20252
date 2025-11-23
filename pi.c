@@ -21,9 +21,17 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
-
+#include <sys/time.h>
 
 double CalcPi(int n);
+
+// Función para obtener tiempo en segundos
+double GetTime()
+{
+    struct timeval tv;
+    gettimeofday(&tv, NULL);
+    return tv.tv_sec + tv.tv_usec * 1e-6;
+}
 
 int main(int argc, char **argv)
 {
@@ -37,23 +45,33 @@ int main(int argc, char **argv)
     scanf("%d",&n);
 #endif
 
-    if (n <= 0 || n > 2147483647 ) 
+    // También permitir pasar n por línea de comandos
+    if (argc > 1) {
+        n = atoi(argv[1]);
+    }
+
+    if (n <= 0 || n > 2147483647) 
     {
         printf("\ngiven value has to be between 0 and 2147483647\n");
         return 1;
     }
     
-    // get initial time 
+    printf("Calculating PI with %d intervals (serial version)...\n", n);
+    
+    // Get initial time 
+    fTimeStart = GetTime();
 
     /* the calculation is done here*/
     fPi = CalcPi(n);
 
-    //get final fime
+    // Get final time
+    fTimeEnd = GetTime();
     
     printf("\npi is approximately = %.20f \nError               = %.20f\n",
            fPi, fabs(fPi - fPi25DT));
     
-    // report time
+    // Report time
+    printf("Execution time      = %.6f seconds\n", fTimeEnd - fTimeStart);
 
     return 0;
 }

@@ -1,0 +1,70 @@
+==============================================
+RESULTADOS LABORATORIO 3 - PTHREADS
+==============================================
+
+CPU: _____ núcleos
+Procesador: _________________
+Fecha: _____________________
+
+==============================================
+PARTE 1: CÁLCULO DE PI
+==============================================
+n = 2000000000 intervalos
+
+--- VERSIÓN SERIAL ---
+Comando: ./pi_s 2000000000
+Tiempo: 5.797584 segundos
+PI calculado: 3.14159265358983885719
+Error: 0.00000000000004574119
+
+--- VERSIÓN PARALELA ---
+
+1 hilo:
+Comando: ./pi_p 2000000000 1
+Tiempo: 6.141908 segundos
+PI calculado: 3.14159265358983885719
+
+2 hilos:
+Comando: ./pi_p 2000000000 2
+Tiempo: 3.548566 segundos
+PI calculado: 3.14159265358966166559
+
+4 hilos:
+Comando: ./pi_p 2000000000 4
+Tiempo: 2.456365 segundos
+PI calculado: 3.14159265358983930128
+
+8 hilos:
+Comando: ./pi_p 2000000000 8
+Tiempo: 1.936646 segundos
+PI calculado: 3.14159265358979444827
+
+16 hilos:
+Comando: ./pi_p 2000000000 16
+Tiempo: 1.825292 segundos
+PI calculado: 3.14159265358968831094
+
+==============================================
+PARTE 2: FIBONACCI
+==============================================
+
+Comando: ./fibonacci 15
+
+Generando los primeros 15 n├║meros de Fibonacci...
+Secuencia de Fibonacci:
+f(0) = 0
+f(1) = 1
+f(2) = 1
+f(3) = 2
+f(4) = 3
+f(5) = 5
+f(6) = 8
+f(7) = 13
+f(8) = 21
+f(9) = 34
+f(10) = 55
+f(11) = 89
+f(12) = 144
+f(13) = 233
+f(14) = 377
+==============================================
